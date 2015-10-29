@@ -15,6 +15,7 @@ Repository Contents
 * **/Firmware** - Example code 
 * **/Hardware** - Eagle design files (.brd, .sch)
 * **/Production** - Production panel files (.brd)
+* **/Libraries** - Arduino library
 
 Documentation
 --------------
