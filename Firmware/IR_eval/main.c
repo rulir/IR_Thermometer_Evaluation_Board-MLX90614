@@ -130,7 +130,7 @@ void ioinit (void)
 	PORTC = 0b00110000; //pullups on the I2C bus
 	
 	//UART_Init((unsigned int)(FOSC/16/(BAUD*2)-1));		// ocillator fq/16/baud rate -1	
-	UART_Init(12);//38400
+	UART_Init(8);//38400
 }
 
 void UART_Init( unsigned int ubrr)
@@ -204,9 +204,10 @@ void i2cSetBitrate(unsigned short bitrateKHz)
 		cbi(TWSR, TWPS1);
 	//#endif
 	// calculate bitrate division	
-	bitrate_div = ((F_CPU/4000l)/bitrateKHz);
-	if(bitrate_div >= 16)
-		bitrate_div = (bitrate_div-16)/2;
+	// bitrate_div = ((F_CPU/4000l)/bitrateKHz);
+	// if(bitrate_div >= 16)
+	// 	bitrate_div = (bitrate_div-16)/2;
+		bitrate_div = ((F_CPU/50000) - 16)/(2*4^0);
 	outb(TWBR, bitrate_div);
 }
 
